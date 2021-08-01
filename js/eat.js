@@ -16,14 +16,13 @@ $(function () {
     }
 
     if (!window.localStorage.getItem('u')) {
-        const u = new Date().Format("yyyyMMddHHmmss") + '-' + Math.random()
+        const u = new Date().Format("yyyyMMddHHmmss") + Math.random().toString(36).substr(2, 15)
         window.localStorage.setItem('u', u)
     }
 
     $.ajax({
         async: false,
-        // url: "https://api.farmeryun.com/api/eat/report?u=" + window.localStorage.getItem('u') + '&c=-1',
-        url: "http://127.0.0.1:9999/api/eat/report?u=" + window.localStorage.getItem('u') + '&c=-1',
+        url: "https://api.farmeryun.com/api/eat/report?u=" + window.localStorage.getItem('u') + '&c=-1',
         type: "GET",
         dataType: 'jsonp',
         jsonp: 'callback',
@@ -47,7 +46,7 @@ $(function () {
 
         $.ajax({
             async: false,
-            url: "http://127.0.0.1:9999/api/eat/report?u=" + window.localStorage.getItem('u') + '&c=' + x,
+            url: "http://api.farmeryun.com/api/eat/report?u=" + window.localStorage.getItem('u') + '&c=' + x,
             type: "GET",
             dataType: 'jsonp',
             jsonp: 'callback',
